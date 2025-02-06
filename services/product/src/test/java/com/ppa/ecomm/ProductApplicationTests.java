@@ -1,4 +1,4 @@
-package com.ppa.product;
+package com.ppa.ecomm;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

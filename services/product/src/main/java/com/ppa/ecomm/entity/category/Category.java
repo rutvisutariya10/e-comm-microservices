@@ -1,11 +1,9 @@
-package com.ppa.product.entity.category;
+package com.ppa.ecomm.entity.category;
 
-import com.ppa.product.entity.product.Product;
+import com.ppa.ecomm.entity.product.Product;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 import java.util.List;
 
 @AllArgsConstructor
@@ -13,6 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@Builder
 @Table(name="category")
 public class Category {
     @Id
