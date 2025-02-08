@@ -34,7 +34,7 @@ public class ProductService {
             throw new ProductPurchaseException("One or more products does not exist");
         }
 
-        var storesRequest = request
+        var storedRequest = request
                 .stream()
                 .sorted(Comparator.comparing(ProductPurchaseRequest::productId))
                 .toList();
@@ -42,16 +42,17 @@ public class ProductService {
         var purchasedProducts = new ArrayList<ProductPurchaseResponse>();
         for(int i = 0; i < storedProducts.size() ; i++) {
             var product = storedProducts.get(i);
-            var productRequest = storesRequest.get(i);
+            var productRequest = storedRequest.get(i);
             if (product.getAvailableQuantity() < productRequest.quantity()) {
                 throw new ProductPurchaseException("Product is Unavailable Currently. ID: "+product.getId());
             }
             var newAvailableQuantity = product.getAvailableQuantity() - productRequest.quantity();
-            product.setAvailableQuantity(newAvailableQuantity);
             purchasedProducts.add(productMapper.toProductPurchaseResponse(product, productRequest.quantity()));
+            product.setAvailableQuantity(newAvailableQuantity);
+
 
         }
-        storedProducts.forEach(p -> productRepository.save(p));
+        storedProducts.forEach(productRepository::save);
         return purchasedProducts;
 
     }

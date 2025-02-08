@@ -9,5 +9,4 @@ public record CustomerResponse (
         String lastname,
         String email,
         Address address) {
-
 }
