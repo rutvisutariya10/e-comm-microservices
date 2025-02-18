@@ -1,13 +1,11 @@
 package com.ppa.ecomm.service;
 
 import com.ppa.ecomm.enums.EmailTemplates;
-import com.ppa.ecomm.records.PaymentConfirmation;
 import com.ppa.ecomm.records.Product;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.kafka.clients.producer.Producer;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
